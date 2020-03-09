@@ -147,6 +147,22 @@
     <Compile Include="Migrations\202003040503108_ApplyAnnotationToCustomerName.designer.cs">
       <DependentUpon>202003040503108_ApplyAnnotationToCustomerName.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202003091027139_UpdatingMembershipTypeClass.cs" />
+    <Compile Include="Migrations\202003091027139_UpdatingMembershipTypeClass.designer.cs">
+      <DependentUpon>202003091027139_UpdatingMembershipTypeClass.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202003091031179_UpdatingMembershipTypeTable.cs" />
+    <Compile Include="Migrations\202003091031179_UpdatingMembershipTypeTable.designer.cs">
+      <DependentUpon>202003091031179_UpdatingMembershipTypeTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202003091041172_AddedBirthdatePropToCustomer.cs" />
+    <Compile Include="Migrations\202003091041172_AddedBirthdatePropToCustomer.designer.cs">
+      <DependentUpon>202003091041172_AddedBirthdatePropToCustomer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202003091048257_makingBirthdatenullable.cs" />
+    <Compile Include="Migrations\202003091048257_makingBirthdatenullable.designer.cs">
+      <DependentUpon>202003091048257_makingBirthdatenullable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\Cycle.cs" />
@@ -299,6 +315,8 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
+    <Content Include="Views\Customers\Index.cshtml" />
+    <Content Include="Views\Cycles\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -329,6 +347,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202003040503108_ApplyAnnotationToCustomerName.resx">
       <DependentUpon>202003040503108_ApplyAnnotationToCustomerName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202003091027139_UpdatingMembershipTypeClass.resx">
+      <DependentUpon>202003091027139_UpdatingMembershipTypeClass.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202003091031179_UpdatingMembershipTypeTable.resx">
+      <DependentUpon>202003091031179_UpdatingMembershipTypeTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202003091041172_AddedBirthdatePropToCustomer.resx">
+      <DependentUpon>202003091041172_AddedBirthdatePropToCustomer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202003091048257_makingBirthdatenullable.resx">
+      <DependentUpon>202003091048257_makingBirthdatenullable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

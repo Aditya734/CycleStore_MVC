@@ -15,6 +15,7 @@ namespace StoreMVC.Models
 		public string Name { get; set; }
 		public bool IsSubscribedToNewsLetter { get; set; }
 		public MemberShipType MemberShipType { get; set; }
-		public byte MemberShipTypeId { get; set; }
+		public byte MemberShipTypeId { get; set; }		
+		public DateTime? Birthdate { get; set; }
 	}
 }

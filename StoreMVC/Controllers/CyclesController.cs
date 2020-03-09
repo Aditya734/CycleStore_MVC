@@ -7,6 +7,22 @@ namespace StoreMVC.Controllers
 {
 	public class CyclesController : Controller
 	{
+		public ViewResult Index()
+		{
+			var cycles = GetCycles();
+
+			return View(cycles);
+		}
+
+		private IEnumerable<Cycle> GetCycles()
+		{
+			return new List<Cycle>
+			{
+				new Cycle { Id = 1, Name = "Mountain Bike" },
+				new Cycle { Id = 2, Name = "Road Bike" }
+			};
+		}
+
 		// GET: Cycles/Random
 		public ActionResult Random()
 		{

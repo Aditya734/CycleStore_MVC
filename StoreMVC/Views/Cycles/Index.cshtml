@@ -1,0 +1,23 @@
+﻿@model IEnumerable<StoreMVC.Models.Cycle>
+@{
+    ViewBag.Title = "Cycles";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Cycles</h2>
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>Cycle</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var Cycle in Model)
+        {
+            <tr>
+                <td>@Cycle.Name</td>
+            </tr>
+        }
+    </tbody>
+</table>
+

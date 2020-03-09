@@ -1,28 +1,18 @@
-﻿@model StoreMVC.ViewModels.RandomCycleViewModel
+﻿@model StoreMVC.Models.Customer
 @{
     ViewBag.Title = "Details";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-@{
-    if (Model.Customer == null)
-    {
-        if (Model.Customers.Count == 0)
+<h1>@Model.Name</h1>
+<ul>
+    <li>Membership Type: @Model.MemberShipType.Name</li>
+    @{ 
+        if (Model.Birthdate != null)
         {
-            <h1>Customers</h1>
-            <p>No Customer Exist.</p>
-        }
-        else
-        {
-            <h1>Customers</h1>
-            foreach (var customer in Model.Customers)
-            {
-                <a href="/Customers/Details/@customer.ID">@customer.Name</a>
-            }
+            <li>Birthdate: @Model.Birthdate</li>
         }
     }
-    else
-    {
-        <h1>@Model.Customer.Name</h1>
-    }
-}
+</ul>
+    
+
