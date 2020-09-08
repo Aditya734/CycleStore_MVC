@@ -66,6 +66,9 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.7\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -75,6 +78,12 @@
     <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.7\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.7\lib\net45\System.Web.Http.WebHost.dll</HintPath>
     </Reference>
     <Reference Include="System.Web.Mvc, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.7\lib\net45\System.Web.Mvc.dll</HintPath>
@@ -121,6 +130,8 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\API\CustomersController.cs" />
     <Compile Include="Controllers\CustomersController.cs" />
     <Compile Include="Controllers\CyclesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -163,12 +174,32 @@
     <Compile Include="Migrations\202003091048257_makingBirthdatenullable.designer.cs">
       <DependentUpon>202003091048257_makingBirthdatenullable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202003091308145_ALteredCycleType.cs" />
+    <Compile Include="Migrations\202003091308145_ALteredCycleType.designer.cs">
+      <DependentUpon>202003091308145_ALteredCycleType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202003100654290_Added_BikeType.cs" />
+    <Compile Include="Migrations\202003100654290_Added_BikeType.designer.cs">
+      <DependentUpon>202003100654290_Added_BikeType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202003100658256_Seeding_BikeType.cs" />
+    <Compile Include="Migrations\202003100658256_Seeding_BikeType.designer.cs">
+      <DependentUpon>202003100658256_Seeding_BikeType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202003100719286_Corrected_Cycles.cs" />
+    <Compile Include="Migrations\202003100719286_Corrected_Cycles.designer.cs">
+      <DependentUpon>202003100719286_Corrected_Cycles.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\BikeType.cs" />
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\Cycle.cs" />
     <Compile Include="Models\MemberShipType.cs" />
+    <Compile Include="Models\Min18YearsIfAMember.cs" />
     <Compile Include="Models\MyDBContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\CustomerFormViewModel.cs" />
+    <Compile Include="ViewModels\CycleFormViewModel.cs" />
     <Compile Include="ViewModels\RandomCycleViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -317,6 +348,9 @@
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Views\Customers\Index.cshtml" />
     <Content Include="Views\Cycles\Index.cshtml" />
+    <Content Include="Views\Cycles\Details.cshtml" />
+    <Content Include="Views\Customers\CustomerForm.cshtml" />
+    <Content Include="Views\Cycles\CycleForm.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -359,6 +393,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202003091048257_makingBirthdatenullable.resx">
       <DependentUpon>202003091048257_makingBirthdatenullable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202003091308145_ALteredCycleType.resx">
+      <DependentUpon>202003091308145_ALteredCycleType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202003100654290_Added_BikeType.resx">
+      <DependentUpon>202003100654290_Added_BikeType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202003100658256_Seeding_BikeType.resx">
+      <DependentUpon>202003100658256_Seeding_BikeType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202003100719286_Corrected_Cycles.resx">
+      <DependentUpon>202003100719286_Corrected_Cycles.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -14,5 +14,7 @@ namespace StoreMVC.Models
 		}
 		public DbSet<Customer> Customers { get; set; } // My domain models
 		public DbSet<Cycle> Cycles { get; set; }// My domain models
+		public DbSet<MemberShipType> MemberShipTypes { get; set; }
+		public DbSet<BikeType> BikeTypes { get; set; }
 	}
 }

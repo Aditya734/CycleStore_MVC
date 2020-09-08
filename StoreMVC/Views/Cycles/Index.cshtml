@@ -5,19 +5,30 @@
 }
 
 <h2>Cycles</h2>
-<table class="table table-bordered table-hover">
-    <thead>
-        <tr>
-            <th>Cycle</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var Cycle in Model)
-        {
-            <tr>
-                <td>@Cycle.Name</td>
-            </tr>
-        }
-    </tbody>
-</table>
 
+@Html.ActionLink("New Cycle","New","Cycles", new { @class = "btn btn-primary"})
+
+@if (!Model.Any())
+{
+    <p>We don't have any Bicycles left at the moment.</p>
+}
+else
+{
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>Bicycle</th>
+                <th>Type</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var Cycle in Model)
+            {
+                <tr>
+                    <td>@Html.ActionLink(Cycle.Name,"Edit","Cycles",new { id = Cycle.Id},null)</td>
+                    <td>@Cycle.BikeType.Name</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
