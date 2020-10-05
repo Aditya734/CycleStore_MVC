@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
-using System.Net.Http;
-using System.Web;
 using System.Web.Http;
 using StoreMVC.Models;
 
@@ -11,7 +9,7 @@ namespace StoreMVC.Controllers.API
 {
     public class CustomersController : ApiController
     {
-        private MyDBContext _context;
+        private readonly MyDBContext _context;
         public CustomersController()
         {
             _context = new MyDBContext();
@@ -26,27 +24,27 @@ namespace StoreMVC.Controllers.API
 
         //GET /api/customer/1
         [HttpGet]
-        public Customer GetCustomer(int id)
+        public IHttpActionResult GetCustomer(int id)
         {
             var customer = _context.Customers.SingleOrDefault(c => c.ID == id);
 
             if (customer == null)
-                throw new HttpResponseException(HttpStatusCode.NotFound);
+                return NotFound();
 
-            return customer;
+            return Ok(customer);
         }
 
         //POST /api/customer
         [HttpPost]
-        public Customer CreateCustomer(Customer customer)
+        public IHttpActionResult CreateCustomer(Customer customer)
         {
             if (!ModelState.IsValid)
-                throw new HttpResponseException(HttpStatusCode.BadRequest);
+                return BadRequest();
 
             _context.Customers.Add(customer);
             _context.SaveChanges();
 
-            return customer;
+            return Created(new Uri(Request.RequestUri + "/" + customer.ID), customer);
         }
 
         //PUT /api/customer/1
