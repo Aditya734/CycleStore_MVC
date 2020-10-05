@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -24,26 +25,26 @@ namespace StoreMVC.Controllers.API
         }
 
         [HttpGet]
-        public Cycle GetCycle(int id)
+        public IHttpActionResult GetCycle(int id)
         {
             var cycle = _context.Cycles.SingleOrDefault(x => x.Id == id);
 
             if (cycle == null)
-                throw new HttpResponseException(HttpStatusCode.NotFound);
+                return NotFound();
 
-            return cycle;
+            return Ok(cycle);
         }
 
         [HttpPost]
-        public Cycle CreateCycle(Cycle cycle)
+        public IHttpActionResult CreateCycle(Cycle cycle)
         {
             if (!ModelState.IsValid)
-                throw new HttpResponseException(HttpStatusCode.BadRequest);
+                return BadRequest();
 
             _context.Cycles.Add(cycle);
             _context.SaveChanges();
 
-            return cycle;
+            return Created(new Uri(Request.RequestUri+"/"+cycle.Id), cycle);
         }
 
         [HttpPut]

@@ -30,7 +30,7 @@ namespace StoreMVC.Controllers.API
 
             if (customer == null)
                 return NotFound();
-
+            
             return Ok(customer);
         }
 

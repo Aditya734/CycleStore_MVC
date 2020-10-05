@@ -12,7 +12,7 @@ namespace StoreMVC.App_Start
     {
         public MappingProfile()
         {
-            var config = new MapperConfiguration(cfg => cfg.CreateMap<Customer, CustomerDto>());
+
         }
     }
 }

@@ -69,9 +69,9 @@ namespace StoreMVC.Controllers
 		public ViewResult Index()
 		{
 			//Include (System.Data.Entity) : Eager Loading. Since, Entity frmwork only loads the Customer model data.
-			var customer = _context.Customers.Include(c => c.MemberShipType).ToList();
+			//var customer = _context.Customers.Include(c => c.MemberShipType).ToList();
 
-			return View(customer);
+			return View();
 		}
 
 		// GET: Customers/Details/{id}

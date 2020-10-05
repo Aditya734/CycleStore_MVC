@@ -5,30 +5,64 @@
 }
 
 <h2>Cycles</h2>
+<p>
+    @Html.ActionLink("New Cycle", "New", "Cycles", new { @class = "btn btn-primary" })
+</p>
 
-@Html.ActionLink("New Cycle","New","Cycles", new { @class = "btn btn-primary"})
+<table id="cycles" class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>Bicycle</th>
+            <th>Type</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+    </tbody>
+</table>
 
-@if (!Model.Any())
+@section scripts
 {
-    <p>We don't have any Bicycles left at the moment.</p>
+    <script>
+        $(document).ready(function () {
+            var table = $("#cycles").DataTable({
+                ajax: {
+                    url: "/api/cycles",
+                    dataSrc: ""
+                },
+                columns: [
+                    {
+                        data: "name",
+                        render: function (data, type, customer) {
+                            return "<a href='/cycles/edit/" + customer.id + "'>" + customer.name + "</a>";
+                        }
+                    },
+                    {
+                        data: "name"
+                    },
+                    {
+                        data: "id",
+                        render: function (data) {
+                            return "<button class='btn-link js-delete' data-cycle-id=" + data + ">Delete</button>";
+                        }
+                    }
+                ]
+            });
+            $(table.table().container()).removeClass('form-inline');
+
+            $("#cycles").on("click", ".js-delete", function () { //Only one handler function for #customers table. .js-delete is used as selector for filtering only for dlete button
+                if (confirm("Are you sure you want to delete this cycle?")) {
+                    var button = $(this);
+                    $.ajax({
+                        url: "/api/cycles/" + button.attr("data-cycle-id"),
+                        method: "DELETE",
+                        success: function () {
+                            table.row(button.parents("tr")).remove().draw();
+                        }
+                    });
+                }
+            });
+        });
+    </script>
 }
-else
-{
-    <table class="table table-bordered table-hover">
-        <thead>
-            <tr>
-                <th>Bicycle</th>
-                <th>Type</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var Cycle in Model)
-            {
-                <tr>
-                    <td>@Html.ActionLink(Cycle.Name,"Edit","Cycles",new { id = Cycle.Id},null)</td>
-                    <td>@Cycle.BikeType.Name</td>
-                </tr>
-            }
-        </tbody>
-    </table>
-}
+
