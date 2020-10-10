@@ -7,7 +7,8 @@ namespace StoreMVC
 	{
 		public static void RegisterGlobalFilters(GlobalFilterCollection filters)
 		{
-			filters.Add(new HandleErrorAttribute());
+			filters.Add(new HandleErrorAttribute()); //Global Error handling
+			filters.Add(new AuthorizeAttribute()); //Global autherization enabled
 		}
 	}
 }

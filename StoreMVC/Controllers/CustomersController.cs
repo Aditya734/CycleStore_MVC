@@ -8,7 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 
 namespace StoreMVC.Controllers
-{
+{	
 	public class CustomersController : Controller
 	{
 		private MyDBContext _context;
@@ -65,7 +65,7 @@ namespace StoreMVC.Controllers
 			return RedirectToAction("Index", "Customers");
 		}
 
-		// GET: Customers
+		// GET: Customers		
 		public ViewResult Index()
 		{
 			//Include (System.Data.Entity) : Eager Loading. Since, Entity frmwork only loads the Customer model data.

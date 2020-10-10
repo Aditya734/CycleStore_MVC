@@ -12,7 +12,8 @@ namespace StoreMVC.App_Start
     {
         public MappingProfile()
         {
-
+            CreateMap<Customer, CustomerDto>();
+            CreateMap<CustomerDto, Customer>();
         }
     }
 }
